@@ -3,14 +3,14 @@ from pickle import load
 import numpy as np
 from gtts import gTTS
 
-# Cargar el modelo
+# UPLOAD MODEL
 model = load(open("./models/randomforest_classifier__boot-Fal_criterion-entr_max_depth-None_max_feat-sqrt_max_nod-10_min_samples-1_min_split-10_n_est-100_42.sav", "rb"))
 
-# Definir opciones de idioma
+# DEFINE LANGUAGE
 languages = {"Español": "es", "Inglés": "en"}
 outcome = {"0": "Negativo", "1": "Positivo"}
 
-# Configuración en una barra lateral
+# SIDEBAR CONFIG
 with st.sidebar:
     st.title("Configuración")
     language = st.selectbox("Seleccione un idioma:", list(languages.keys()))
@@ -19,7 +19,7 @@ with st.sidebar:
 # Texto dinámico según el idioma seleccionado
 if language == "Español":
     text_labels = {
-        "title": "Test de diabetes - Diagnóstico",
+        "title": "Autodiagnóstico - Test de Diabetes",
         "instructions": """
             ### Instrucciones:
             1. Ingrese sus datos en los cuadros proporcionados.
@@ -42,7 +42,7 @@ if language == "Español":
     }
 else:  # Inglés
     text_labels = {
-        "title": "Diabetes Test - Diagnosis",
+        "title": "Self-Diagnosis - Diabetes Test",
         "instructions": """
             ### Instructions:
             1. Enter your data in the fields provided.
@@ -77,7 +77,7 @@ st.markdown(
 )
 
 # Mostrar título
-st.image("https://www.ccomsuam.org/wp-content/uploads/2017/11/hospital-links-logo.png", width=400)
+st.image("quironsalud.png", width=300)
 st.title(text_labels["title"])
 
 # Mostrar instrucciones
@@ -136,6 +136,6 @@ if st.button(text_labels["predict"]):
 
 # Imagen inclusiva al final
 st.image(
-    "https://escueladepacientestuc.gob.ar/wp-content/uploads/2023/10/test-de-riesgo-1024x683.jpg",
+    "predictiondiabetes.jpg",
     use_container_width=True
 )
